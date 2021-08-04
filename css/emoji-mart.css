@@ -43,6 +43,11 @@
   line-height: 0;
 }
 
+.emoji-mart-anchor-icon {
+  display: flex;
+  justify-content: center;
+}
+
 .emoji-mart-anchor {
   position: relative;
   display: block;
@@ -93,6 +98,10 @@
   height: 270px;
   padding: 0 6px 6px 6px;
   will-change: transform; /* avoids "repaints on scroll" in mobile Chrome */
+}
+
+.emoji-mart-scroll > div {
+  overflow-x: hidden !important;
 }
 
 .emoji-mart-search {

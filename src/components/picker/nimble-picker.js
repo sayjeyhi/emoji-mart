@@ -316,14 +316,14 @@ export default class NimblePicker extends React.PureComponent {
     // }
   }
 
-  handleScrollPaint(titleIndexes) {
+  handleScrollPaint(titleIndexes, size) {
     return ({ scrollTop }) => {
       let activeCategory = null
 
       if (this.SEARCH_CATEGORY.emojis) {
         activeCategory = this.SEARCH_CATEGORY
       } else {
-        const scrolledItem = Math.ceil(scrollTop / 36)
+        const scrolledItem = Math.ceil(scrollTop / size)
 
         Object.keys(titleIndexes)
           .sort((a, b) => titleIndexes[a].row - titleIndexes[b].row)
@@ -595,12 +595,12 @@ export default class NimblePicker extends React.PureComponent {
           <Grid
             ref={gridRef}
             columnCount={perLine}
-            columnWidth={36}
-            rowHeight={36}
+            columnWidth={emojiSize + 12}
+            rowHeight={emojiSize + 12}
             height={264}
-            width={perLine * 36 + 10}
+            width={width - 12}
             rowCount={rowCount}
-            onScroll={this.handleScrollPaint(titleIndexes)}
+            onScroll={this.handleScrollPaint(titleIndexes, emojiSize + 12)}
           >
             {renderEmoji({
               activeCategory: this.activeCategory,
